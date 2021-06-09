@@ -16,11 +16,10 @@ class KafkaSyncProducer:
         )
         self.topic = KafkaProducerConfig.KAFKA_TOPIC
 
-    def send_message(self, user, event, partition):
+    def send_message(self, user, event):
         self.producer.send(
             topic=self.topic,
             key=bytes(user, "utf-8"),
             value=event,
-            partition=partition,
         )
         self.producer.flush()

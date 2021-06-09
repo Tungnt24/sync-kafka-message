@@ -47,7 +47,7 @@ def send_kafka_message(
     logger.info(
         f"SENDING MESSAGE | USER: {user} | TOPIC: {topic} | PARTITION: {partition} | OFFSET: {offset}"
     )
-    producer.send_message(user, event, partition)
+    producer.send_message(user, event)
     tp = TopicPartition(topic, partition)
     consumer.commit({tp: OffsetAndMetadata(offset + 1, None)})
     logger.info(f"DONE")
